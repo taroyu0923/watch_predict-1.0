@@ -76,12 +76,14 @@ def main():
     # test data(Decision Tree / Random forest)
 
     try:
+
         model_For_Decision_Tree = Set_Decision_Tree(X_train, y_train)
         model_For_Random_forest = Set_Random_Forest(X_train, y_train)
 
         predct_result_1 = Predict_Decision_Tree_Model(model_For_Decision_Tree, X_test)
         predct_result_2 = Predict_Random_Forest_Model(model_For_Random_forest, X_test)
     except Exception as e:
+
         print('exception type is:')
         print(type(e), str(e))
         print('exception happened')
@@ -89,6 +91,7 @@ def main():
     joblib.dump(model_For_Decision_Tree, 'saved_model/md1_Dec_Tree.pkl')
     joblib.dump(model_For_Random_forest, 'saved_model/md2_Ram_For.pkl')
     print(predct_result_1, predct_result_2)
+
 
 if __name__ == "__main__":
     main()

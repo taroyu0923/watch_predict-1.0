@@ -36,17 +36,15 @@ def Set_Random_Forest(X1_train, X1_test, y1_train, y1_test):
 
 
 # main
-
 def main():
 
     try:
-        # data input
 
-        csv_file_path = 'D:/WORK4/watch_predict 1.0/input_data/test_1.csv' # you need to add data's path here (csv file)
+        # data input
+        csv_file_path = 'D:/WORK4/watch_predict-1.0/input_data/test_1.csv' # you need to add data's path here (csv file)
         res = Read_from_csv(csv_file_path)
 
         # new dataset
-
         X = res[['acceleration_x', 'acceleration_y', 'acceleration_z', 'gyro_x', 'gyro_y', 'gyro_z']]
         y = res[['activity']] 
         y = np.ravel(y)     # change to array
@@ -54,11 +52,11 @@ def main():
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
 
         # test data(Decision Tree / Random forest)
-
         model_For_Decision_Tree = Set_Decision_Tree(X_train, X_test, y_train, y_test)
         model_For_Random_forest = Set_Random_Forest(X_train, X_test, y_train, y_test)
 
     except Exception as e:
+
         print('exception type is:')
         print(type(e), str(e))
         print('exception happened')
@@ -67,6 +65,7 @@ def main():
     joblib.dump(model_For_Decision_Tree, 'saved_model/md1_Dec_Tree.pkl')
     joblib.dump(model_For_Random_forest, 'saved_model/md2_Ram_For.pkl')
     print('dump finish!')
+
 
 if __name__ == "__main__":
     main()

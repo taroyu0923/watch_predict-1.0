@@ -3,7 +3,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.externals import joblib
 import pandas as pd
 import numpy as np
-
+import csv
 
 def Read_from_csv(path):
     test_array = pd.read_csv(path)
@@ -25,8 +25,8 @@ def Predict_result(model, data):
 def main():
 
 
-	test_path = 'D:/WORK4/watch_predict 1.0/input_data/test_1.csv'		# input your test data
-	test_model_path = 'D:/WORK4/watch_predict 1.0/saved_model/md2_Ram_For.pkl'		# input your model
+	test_path = 'D:/WORK4/watch_predict-1.0/input_data/test_1.csv'		# input your test data
+	test_model_path = 'D:/WORK4/watch_predict-1.0/saved_model/md2_Ram_For.pkl'		# input your model
 
 	test_data_temp = Read_from_csv(test_path)
 	test_data = test_data_temp[['acceleration_x', 'acceleration_y', 'acceleration_z', 'gyro_x', 'gyro_y', 'gyro_z']]	# input your attribute
@@ -35,7 +35,11 @@ def main():
 	test_result = Predict_result(test_model, test_data)
 	print(test_result)
 
+	with open('output_result.csv', 'w', newline='') as csvfile:
 
+		writer = csv.writer(csvfile)
+		writer.writerow(['result'])
+		writer.writerows(test_result)
 
 
 if __name__ == "__main__":
