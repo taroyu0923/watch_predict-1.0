@@ -1,0 +1,42 @@
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.externals import joblib
+import pandas as pd
+import numpy as np
+
+
+def Read_from_csv(path):
+    test_array = pd.read_csv(path)
+    print(test_array.head)
+    return test_array
+
+
+def Read_from_pickle(path):
+	model = joblib.load(path)
+	return model
+
+
+def Predict_result(model, data):
+	result = model.predict(data)
+	return result
+
+
+# main
+def main():
+
+
+	test_path = 'D:/WORK4/watch_predict 1.0/input_data/test_1.csv'		# input your test data
+	test_model_path = 'D:/WORK4/watch_predict 1.0/saved_model/md2_Ram_For.pkl'		# input your model
+
+	test_data_temp = Read_from_csv(test_path)
+	test_data = test_data_temp[['acceleration_x', 'acceleration_y', 'acceleration_z', 'gyro_x', 'gyro_y', 'gyro_z']]	# input your attribute
+
+	test_model = Read_from_pickle(test_model_path)
+	test_result = Predict_result(test_model, test_data)
+	print(test_result)
+
+
+
+
+if __name__ == "__main__":
+    main()
