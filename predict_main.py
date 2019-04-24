@@ -33,13 +33,16 @@ def main():
 
 	test_model = Read_from_pickle(test_model_path)
 	test_result = Predict_result(test_model, test_data)
+	test_result = [[test_result]]
 	print(test_result)
+
 
 	with open('output_result.csv', 'w', newline='') as csvfile:
 
 		writer = csv.writer(csvfile)
 		writer.writerow(['result'])
-		writer.writerows(test_result)
+		writer.writerows(test_result + '\n')
+
 
 
 if __name__ == "__main__":
