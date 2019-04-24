@@ -41,7 +41,7 @@ def main():
 
 		writer = csv.writer(csvfile)
 		writer.writerow(['result'])
-		writer.writerows(test_result + '\n')
+		writer.writerows(test_result)
 
 
 
