@@ -47,6 +47,16 @@ def main():
         # new dataset
         X = res[['acceleration_x', 'acceleration_y', 'acceleration_z', 'gyro_x', 'gyro_y', 'gyro_z']]
         y = res[['activity']] 
+
+
+        # test dataset
+        '''
+        path2 = 'D:/WORK4/watch_predict-1.0/input_data/0_Accelerometer_Sat-Apr-27-15_24_38-GMT08_00-2019_Log.csv'
+        res_test = Read_from_csv(path2)
+        X2 = res_test[['acceleration_x', 'acceleration_y', 'acceleration_z']]
+        print(X2.head())
+        '''
+
         y = np.ravel(y)     # change to array
         print(X.head(), '\n', 'y=', y)
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
