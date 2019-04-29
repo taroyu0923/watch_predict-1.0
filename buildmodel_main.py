@@ -56,7 +56,7 @@ def main():
 
         # test dataset
         '''
-        path2 = 'D:/WORK4/watch_predict-1.0/input_data/0_Accelerometer_Sat-Apr-27-15_24_38-GMT08_00-2019_Log.csv'
+        path2 = 'D:/WORK4/watch_predict-1.0/input_data/0_Accelerometer_Sun-Apr-28-11_57_07-GMT08_00-2019_Log.csv'
         res_test = Read_from_csv(path2)
         X2 = res_test[['acceleration_x', 'acceleration_y', 'acceleration_z']]
         print(X2.head())
