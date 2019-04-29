@@ -6,7 +6,12 @@ from sklearn.externals import joblib
 import pandas as pd
 import numpy as np
 
+'''
+# method to transform csv file to dataframe
 
+input: path of data(.csv file)
+output dataframe and print head of dataset
+'''
 def Read_from_csv(path):
     test_array = pd.read_csv(path)
     print(test_array.head)
