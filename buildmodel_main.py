@@ -6,6 +6,34 @@ from sklearn.externals import joblib
 import pandas as pd
 import numpy as np
 
+'''
+
+
+Parameters
+--------
+
+Read_from_csv: string, optional(file's path, only for csv file)
+    Read the csv file and put them into dataframe
+
+Set_Decision_Tree: Double array * 4(X training data, X testing data, y training data, y testing data)
+    Input the data which want to training,
+    This method will train data by decision tree, then return model
+    Finally, it would print out test score of return model, the score would be:
+        classification report
+        Confusion matrix
+        Accuracy score
+
+Set_Random_Forest:Double array * 4(X training data, X testing data, y training data, y testing data)
+    Input the data which want to training,
+    This method will train data by random forest, then return model
+    Finally, it would print out test score of return model, the score would be:
+        classification report
+        Confusion matrix
+        Accuracy score
+
+
+'''
+
 
 def Read_from_csv(path):
     test_array = pd.read_csv(path)
