@@ -4,6 +4,32 @@ from sklearn.externals import joblib
 import pandas as pd
 import numpy as np
 
+
+
+'''
+
+
+Parameters
+--------
+
+
+Read_from_csv: string, optional(file's path, only for .csv file)
+    Read the csv file and put them into dataframe
+
+Read_from_pickle: string, optional(file's path, only for .pkl file)
+    Read the model file and put them into process
+
+Predict_result: model(pkl), data(Double array)
+	use input data and model to predict result and output
+
+output_csv: data(array), string(path)
+	write result data into the csv file, then output
+
+
+'''
+
+
+
 def Read_from_csv(path):
     test_array = pd.read_csv(path)
     print(test_array.head)
