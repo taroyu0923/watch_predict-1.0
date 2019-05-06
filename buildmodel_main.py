@@ -69,12 +69,22 @@ def main():
     try:
 
         # data input
-        csv_file_path = 'D:/WORK4/watch_predict-1.0/input_data/test_1.csv' # you need to add data's path here (csv file)
-        res = Read_from_csv(csv_file_path)
+        acce_file_path = 'D:/Year_PROJ/watch_predict-1.0/input_data/Accelerometer_Merge_Log.csv' # you need to add acceleration data's path here (csv file)
+        gyro_file_path = 'D:/Year_PROJ/watch_predict-1.0/input_data/Gyro_Merge_Log.csv' # you need to add Gyroscope data's path here (csv file)
+        acce_res = Read_from_csv(acce_file_path)
+        gyro_res = Read_from_csv(gyro_file_path)
 
         # new dataset
-        X = res[['acceleration_x', 'acceleration_y', 'acceleration_z', 'gyro_x', 'gyro_y', 'gyro_z']]
-        y = res[['activity']] 
+        acce_X = acce_res[['acceleration_x', 'acceleration_y', 'acceleration_z']]
+        acce_y = acce_res[['activity']] 
+        acce_y = np.ravel(acce_y)     # change to array
+        print(acce_X.head(), '\n', 'y=', acce_y)
+
+
+        gyro_X = gyro_res[['gyro_x', 'gyro_y', 'gyro_z']]
+        gyro_y = gyro_res[['activity']] 
+        gyro_y = np.ravel(gyro_y)     # change to array
+        print(gyro_X.head(), '\n', 'y=', gyro_y)
 
 
         # test dataset
@@ -85,13 +95,12 @@ def main():
         print(X2.head())
         '''
 
-        y = np.ravel(y)     # change to array
-        print(X.head(), '\n', 'y=', y)
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+        acce_X_train, acce_X_test, acce_y_train, acce_y_test = train_test_split(acce_X, acce_y, test_size=0.2, random_state=0)
+        gyro_X_train, gyro_X_test, gyro_y_train, gyro_y_test = train_test_split(gyro_X, gyro_y, test_size=0.2, random_state=0)
 
         # test data(Decision Tree / Random forest)
-        model_For_Decision_Tree = Set_Decision_Tree(X_train, X_test, y_train, y_test)
-        model_For_Random_forest = Set_Random_Forest(X_train, X_test, y_train, y_test)
+        model_For_acce = Set_Random_Forest(acce_X_train, acce_X_test, acce_y_train, acce_y_test)
+        model_For_gyro = Set_Random_Forest(gyro_X_train, gyro_X_test, gyro_y_train, gyro_y_test)
 
     except Exception as e:
 
@@ -100,8 +109,8 @@ def main():
         print('exception happened')
 
 
-    joblib.dump(model_For_Decision_Tree, 'saved_model/md1_Dec_Tree.pkl')
-    joblib.dump(model_For_Random_forest, 'saved_model/md2_Ram_For.pkl')
+    joblib.dump(model_For_acce, 'saved_model/md1_acce.pkl')
+    joblib.dump(model_For_gyro, 'saved_model/md2_gyro.pkl')
     print('dump finish!')
 
 
