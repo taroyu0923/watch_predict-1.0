@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import weka.classifiers.trees.RandomForest;
+import weka.classifiers.trees.J48;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
@@ -15,33 +15,24 @@ import weka.core.SerializationHelper;
 
 public class WekaUse {
 
-	public static int getResult(String path, Instance inputNum) throws FileNotFoundException, Exception 
+	public static double getResult(String path, Instance inputNum) throws FileNotFoundException, Exception 
 	{
-		int result = 0;
 		Instance dataRaw = inputNum;
-		RandomForest rf = (RandomForest) SerializationHelper.read(new FileInputStream(path));
+		J48 rf = (J48) SerializationHelper.read(new FileInputStream(path));
 		
 		double label = rf.classifyInstance(dataRaw);
         
         System.out.println(label);
-        if(label <= 0.5) 
-        {
-        	result = 0;
-        }
-        else 
-        {
-        	result = 1;
-        }
-        System.out.println(result);
+        
 		
-		return result;
+		return label;
 	}
 	
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		int resultNum;
-		String path = "Accle_model.model";
+		double resultNum;
+		String path = "Accle_model_build1.model";
 		
 		
 		/*
