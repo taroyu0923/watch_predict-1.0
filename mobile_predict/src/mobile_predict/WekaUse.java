@@ -15,11 +15,10 @@ import weka.core.SerializationHelper;
 
 public class WekaUse {
 
-	public static double getResult(String path, Instance inputNum) throws FileNotFoundException, Exception 
+	public static double getResult(Instance inputNum, J48 model) throws FileNotFoundException, Exception 
 	{
 		Instance dataRaw = inputNum;
-		J48 rf = (J48) SerializationHelper.read(new FileInputStream(path));
-		
+		J48 rf = model;
 		double label = rf.classifyInstance(dataRaw);
         
         System.out.println(label);
@@ -31,8 +30,9 @@ public class WekaUse {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		double resultNum;
 		String path = "Accle_model_build1.model";
+		double resultNum;
+		J48 rf = (J48) SerializationHelper.read(new FileInputStream(path));
 		
 		
 		/*
@@ -62,7 +62,7 @@ public class WekaUse {
 		testInstance.setDataset(data);
 		
 		//Call function
-		resultNum = getResult(path, testInstance);
+		resultNum = getResult(testInstance, rf);
 		
 
 	}
