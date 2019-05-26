@@ -11,7 +11,7 @@
 
 # mobile_predict(use Java)
 
-
+- 此為連接手機與預測模型(WEKA)的api原型
 - use Java SDK 12
 - package: java.io, weka.core, weka.classifiers
 - model(REPTTree):
