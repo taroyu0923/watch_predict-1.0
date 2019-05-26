@@ -1,20 +1,20 @@
 # watch_predict-1.0
 
 - use Python 3.7
-  package:
-    sklearn, pandas, numpy
+ package:
+ sklearn, pandas, numpy
 - model:
-    md1_Dec_Tree.pkl(決策樹)
-    md2_Ram_For.pkl(隨機森林)
+ md1_Dec_Tree.pkl(決策樹)
+ md2_Ram_For.pkl(隨機森林)
 
 # mobile_predict(use Java)
 
 - use Java SDK 12
 - package:
-    java.io, weka.core, weka.classifiers
+ java.io, weka.core, weka.classifiers
 - model(REPTTree):
-    Accle_model_build1.model 走路或跑步模型
-    Accle_model_machine.model 震動機模型
+ Accle_model_build1.model 走路或跑步模型
+ Accle_model_machine.model 震動機模型
     
 # input data
 
