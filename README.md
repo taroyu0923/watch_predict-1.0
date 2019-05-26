@@ -1,11 +1,11 @@
 # watch_predict-1.0
 
 - use Python 3.7
- package:
- sklearn, pandas, numpy
+ - package:
+  - sklearn, pandas, numpy
 - model:
- md1_Dec_Tree.pkl(決策樹)
- md2_Ram_For.pkl(隨機森林)
+ - md1_Dec_Tree.pkl(決策樹)
+ - md2_Ram_For.pkl(隨機森林)
 
 # mobile_predict(use Java)
 
